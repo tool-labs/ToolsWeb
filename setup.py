@@ -1,8 +1,7 @@
 from distutils.core import setup
-from pip.req import parse_requirements
 
-pip_reqs = parse_requirements('requirements.txt')
-reqs = [str(req.req) for req in pip_reqs]
+with open('requirements.txt') as f:
+    reqs = f.read().splitlines()
 
 setup(
     name='ToolsWeb',

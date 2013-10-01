@@ -8,7 +8,7 @@ setup(
     version='0.1dev',
     author='Robin Krahl',
     author_email='me@robin-krahl.de',
-    packages=['toolsweb',],
+    packages=['toolsweb', 'toolsweb.templates',],
     license='LICENSE',
     long_description=open('README.txt').read(),
     install_requires=reqs,

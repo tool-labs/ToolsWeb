@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% block tool_title %}{% endblock %} | Wikimedia Tool Labs{% endblock %}</title>
+        <meta charset="utf-8" />
+        {% block header %}
+        <link rel="stylesheet" href="/static/css/bootstrap-3.0.0.min.css" />
+        <link rel="stylesheet" href="/static/css/tools.css" />
+        <link rel="stylesheet" href="/static/css/tools-footer.css" />
+        <script src="/static/js/bootstrap-3.0.0.min.js"></script>
+        {% block tool_header %}{% endblock %}
+        {% block header %}
+    </head>
+    <body>
+        {% block body %}
+
+        {% block tool_nav %}{% endblock %}
+
+        <div id="wrap">
+            {% block tool_pre_container %}{% endblock %}
+
+            <div class="container">
+                {% block body_container %}
+                <div id="page-header">
+                    <h1>{% block tool_heading %}{% endblock %}</h1>
+                </div>
+                {% block tool_body %}{% endblock %}
+                {% endblock %}
+            </div>
+
+            {% block tool_post_container %}{% endblock %}
+
+            <div id="push"></div>
+        </div>
+
+        {% block footer %}
+            <div id="footer">
+                <div class="container">
+                    <a href="https://tools.wmflabs.org"><img id="footer-icon" src="/static/img/powered-by-tool-labs.png" title="Powered by Wikimedia Tool Labs" alt="Powered by Wikimedia Tool Labs" /></a>
+
+                    <p class="text-muted">{% block tool_footer %}{% endblock %}</p>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% endblock %}
+    </body>
+</html>

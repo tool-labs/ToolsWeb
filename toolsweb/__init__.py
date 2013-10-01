@@ -18,11 +18,17 @@ def connect_to_wiki(lang):
     return connect_to_labs(database=wiki + '_p',
                            host=wiki + '.labsdb')
 
-def create_app(name):
+def create_app(name, template_package=None, template_path=None):
     app = flask.Flask(name)
 
+    app_loader = app.jinja_loader
+    if template_package is not None:
+        app_loader = jinja2.PackageLoader(template_package)
+    elif template_path is not None:
+        app_loader = jinja2.FileSystemLoader(template_path)
+    
     app.jinja_loader = jinja2.ChoiceLoader([
-        jinja2.PackageLoader(name),
+        app_loader,
         jinja2.PackageLoader('toolsweb'),
     ])
 

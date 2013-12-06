@@ -5,7 +5,7 @@ import jinja2
 import os.path
 import oursql
 
-def connect_to_labs(database, host):
+def connect_to_database(database, host):
     default_file = os.path.expanduser('~/replica.my.cnf')
     if not os.path.isfile(default_file):
         raise Exception('Database access not configured for this account!')
@@ -13,10 +13,9 @@ def connect_to_labs(database, host):
     return oursql.connect(host=host, db=database,
                           read_default_file=default_file)
 
-def connect_to_wiki(lang):
-    wiki = lang + 'wiki'
-    return connect_to_labs(database=wiki + '_p',
-                           host=wiki + '.labsdb')
+def connect_to_labsdb(project):
+    return connect_to_database(database=project + '_p',
+                               host=project + '.labsdb')
 
 def create_app(name, template_package=None, template_path=None):
     app = flask.Flask(name)
